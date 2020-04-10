@@ -16,7 +16,7 @@ const getStatsFor = (lang, task) => {
   let stats = {};
 
   if (lang === 'javascript' || lang === 'python' || ['ch-4', 'ch-5'].includes(task)) {
-    const json = fs.readFileSync(`./audits/${task}.json`, 'utf8');
+    const json = fs.readFileSync(`${process.cwd()}/audits/${task}.json`, 'utf8');
     const payload = JSON.parse(json);
 
     stats.totalTests = payload.numTotalTests;
