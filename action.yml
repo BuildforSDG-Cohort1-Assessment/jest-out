@@ -13,4 +13,4 @@ inputs:
     default: 'https://us-central1-buildforsdg.cloudfunctions.net'
 runs:
   using: 'node12'
-  main: 'index.js'
+  main: 'dist/index.js'
