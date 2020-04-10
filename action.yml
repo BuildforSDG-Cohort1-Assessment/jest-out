@@ -1,13 +1,16 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: 'Report Jest Audit'
+description: 'report test stats for a challenge'
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  challenge:
+    description: 'the challenge or task to report on'
     required: true
-    default: '1000'
-outputs:
-  time: # output will be available to future steps 
-    description: 'The message to output'
+  lang:
+    description: 'the programming language in use'
+    required: true
+  server:  
+    description: 'base API endpoint URL'
+    required: true
+    default: 'https://us-central1-buildforsdg.cloudfunctions.net'
 runs:
   using: 'node12'
   main: 'dist/index.js'
