@@ -19,20 +19,6 @@ const getStatsFor = (lang, task) => {
     const json = fs.readFileSync(`${process.cwd()}/audits/${task}.json`, 'utf8');
     const payload = JSON.parse(json);
 
-    // HINT: how data looks
-    // {
-    //   numFailedTestSuites: 1,
-    //   numFailedTests: 1,
-    //   numPassedTestSuites: 0,
-    //   numPassedTests: 0,
-    //   numPendingTestSuites: 0,
-    //   numPendingTests: 0,
-    //   numRuntimeErrorTestSuites: 0,
-    //   numTodoTests: 0,
-    //   numTotalTestSuites: 1,
-    //   numTotalTests: 1
-    // }
-
     stats.totalTests = payload.numTotalTests;
     stats.passedTests = payload.numPassedTests;
   }
@@ -40,23 +26,6 @@ const getStatsFor = (lang, task) => {
   if (lang === 'php') {
     const xml = fs.readFileSync(`${process.cwd()}/audits/${task}.xml`, 'utf8');
     const data = xml2json.toJson(xml, { object: true });
-    
-    // HINT: how data looks.
-    // {
-    //   testsuites: {
-    //     testsuite: {
-    //       name: './audits/ch-1',
-    //       tests: '3',
-    //       assertions: '36',
-    //       errors: '0',
-    //       warnings: '0',
-    //       failures: '3',
-    //       skipped: '0',
-    //       time: '0.350120',
-    //       testsuite: [Object]
-    //     }
-    //   }
-    // }
 
     const payload = data.testsuites.testsuite;
     stats.totalTests = payload.tests;
